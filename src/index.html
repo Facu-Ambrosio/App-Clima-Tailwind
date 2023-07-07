@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/dist/output.css" rel="stylesheet">
+</head>
+
+<body>
+  <main class="h-screen flex flex-col items-center jus bg-gradient-to-r from-indigo-800 to-violet-600">
+    <section class="mb-36">
+      <div class="text-3xl flex justify-center font-bold text-gray-300">
+        Choose your city:
+      </div>
+      <div>
+        <div class="w-full max-w-xs">
+          <form class="rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4 flex flex-col justify-center items-center">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="City"></label>
+              <input class="shadow appearance-none border rounded w-full my-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="ciudad" type="text" placeholder="City">
+              <button class="bg-indigo-400 hover:bg-indigo-500 w-20 h-10 rounded-lg" type="submit" id="buscar">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="flex items-center justify-center flex-wrap gap-4" id="ciudades">
+<!--       <div class="text-xl bg-slate-100 box-border w-60 rounded-3xl shadow-lg bg-opacity-40">
+        <div class="flex flex-col items-center py-4">
+          <h5 class="font-black">Ciudad, Pais</h5>
+          <img src="./assets/01d.png" alt="">
+          <p>
+            Temperatura: 14 °C
+          </p>
+          <p>
+            ST: 15 °C
+          </p>
+          <p>
+            Humedad: 70%
+          </p>
+        </div>
+      </div>
+-->
+    </section>
+  </main>
+  <script src="../dist/main.js"></script>
+</body>
+
+</html>
