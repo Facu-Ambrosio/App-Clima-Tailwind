@@ -7,15 +7,23 @@ const options = {
 };
 
 const getData = async (ciudad) => {
-  let resp = await fetch(`https://weather-api99.p.rapidapi.com/weather?city=${ciudad}`, options)
-  let data = await resp.json();
-  console.log(data);
-  return data;
-};
+  let resp;
+  try {
+    resp = await fetch(`https://weather-api99.p.rapidapi.com/weather?city=${ciudad}`, options)
+    if (resp.status === 404){
+      throw "la ciudad no existe";
+    } else {
+      let data = await resp.json();
+      return data;
+    }
+  } catch (error) {
+    throw error;
+  }
+}
 
-const crearCard = async (param) => {
-  let data = await getData(param.replace(/ /g, "%20"));
+const crearCard = async (data) => {
   let main = await data.main;
+
   let weather = await data.weather[0];
   let ciudad = await data.name;
   let pais = await data.sys.country;
@@ -45,13 +53,18 @@ const crearCard = async (param) => {
   </div>
   `;
   section.append(card);
-
-};
+}
 
 let form = document.querySelector("form");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   let ciudad = document.getElementById("ciudad").value;
-  await crearCard(ciudad);
-  form.reset();
+  let data;
+  try {
+    data = await getData(ciudad.replace(/ /g, "%20"));
+    await crearCard(data);
+    form.reset();
+  } catch (error) {
+    Swal.fire(`${error}`);
+  }
 })
